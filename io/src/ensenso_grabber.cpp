@@ -1008,7 +1008,7 @@ pcl::EnsensoGrabber::processGrabbing ()
           }
           else
           {
-            camera_[itmImages][itmRaw][itmLeft].getBinaryDataInfo (&width, &height, &channels, &bpe, &isFlt, 0);
+            camera_[itmImages][itmRectified][itmLeft].getBinaryDataInfo (&width, &height, &channels, &bpe, &isFlt, 0);
             images->first.header.stamp = images->second.header.stamp = getPCLStamp (timestamp);
             images->first.width = images->second.width = width;
             images->first.height = images->second.height = height;
@@ -1016,8 +1016,8 @@ pcl::EnsensoGrabber::processGrabbing ()
             images->second.data.resize (width * height * sizeof(float));
             images->first.encoding = images->second.encoding = getOpenCVType (channels, bpe, isFlt);
 
-            camera_[itmImages][itmRaw][itmLeft].getBinaryData (images->first.data.data (), images->first.data.size (), 0, 0);
-            camera_[itmImages][itmRaw][itmRight].getBinaryData (images->second.data.data (), images->second.data.size (), 0, 0);
+            camera_[itmImages][itmRectified][itmLeft].getBinaryData (images->first.data.data (), images->first.data.size (), 0, 0);
+            camera_[itmImages][itmRectified][itmRight].getBinaryData (images->second.data.data (), images->second.data.size (), 0, 0);
           }
         }
 
